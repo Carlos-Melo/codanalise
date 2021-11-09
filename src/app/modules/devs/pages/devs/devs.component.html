@@ -1,0 +1,14 @@
+<div class="devs-area" [ngStyle]="{'margin-left' : validaLogin === 'true' ? '300px'  : '0px', 'padding-top' : validaLogin === 'true' ? ''  : '100px'}">
+  <div class="card border-0 bg-white text-dark-gray" style="border-radius: 15px; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+    <ng-container *ngIf="!loading else carregamento">
+      <app-devs-listagem [usuario]="usuario"></app-devs-listagem>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #carregamento>
+  <div class="text-center p-5 m-5">
+    <h5>Carregando <i class="fa fa-spinner fa-spin pl-2"></i></h5>
+  </div>
+</ng-template>
+
