@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'configuracoes', loadChildren: () => import('./modules/configuracoes/configuracoes.module').then(m => m.ConfiguracoesModule) },
   { path: 'usuario', loadChildren: () => import('./modules/usuario/usuario.module').then(m => m.UsuarioModule) },
   { path: '', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule) },
-  { path: '',   redirectTo: '/home', pathMatch: 'full' }
+  { path: '',   redirectTo: 'home', pathMatch: 'full' }
 
 ];
 
