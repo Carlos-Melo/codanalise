@@ -13,6 +13,19 @@ a {
   cursor: pointer;
 }
 
+input, textarea {
+  outline: none;
+  &:focus {
+    box-shadow: none;
+    border: solid 2px #118ab2;
+  }
+
+  &:checked {
+    border: solid 2px #118ab2;
+    background-color: #118ab2;
+  }
+}
+
 @media screen and (max-width: 800px) {
   .publicacao-area {
     margin: 0;

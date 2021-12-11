@@ -43,7 +43,7 @@ export class MenuLateralComponent implements OnInit {
 
   acessarPerfil(){
     this.devsService.usuarioEspecifico = this.usuario;
-    this.rota.navigate(['/devs/dev-perfil']);
+    this.rota.navigate(['/perfil']);
   }
 
 }

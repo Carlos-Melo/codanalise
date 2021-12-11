@@ -15,7 +15,7 @@
           <div>
             <div class="d-flex align-items-center">
               <a [routerLink]="['dev-perfil', col.id]" class="text-dark-gray me-2"><h6 class="m-0">{{col.nome}} {{col.sobrenome}}</h6></a>
-              <img src="../../../../../assets/img/logo/logo30.png" width="15px">
+              <img src="../../../../../assets/img/logo/logo30.png" width="15px" *ngIf="col.mentor === true">
             </div>
             
             <p class="m-0" style="font-size: 13px;">{{col.status}}</p>
