@@ -1,15 +1,15 @@
 <ng-container >
-  <div *ngIf="validaUsuario else semDados" class="dev-perfil-area">
+  <div class="dev-perfil-area">
 
       <div class="card bg-white text-dark-gray border-0">
         <div class="card-body border-bottom border-4 border-primary-color p-0 mt-5 mb-3">
           <div class="d-flex justify-content-center">
-            <img src="../../../../../assets/img/personas/profile.png" width="100px" class="rounded-circle border border-4 border-primary-color ft-perfil">
+            <img src="../../../../../assets/img/personas/avatar.png" width="100px" class="rounded-circle border border-4 border-primary-color ft-perfil">
           </div>
         </div>
         <div class="text-center">
-          <h5>{{usuarioEspecifico.nome}} {{usuarioEspecifico.sobrenome}}</h5>
-          <p>{{usuarioEspecifico.status}}</p>
+          <h5>{{usuario?.nome}} {{usuario?.sobrenome}}</h5>
+          <p>{{usuario?.status}}</p>
         </div>
         <div class="card-footer d-flex justify-content-between align-items-center bg-white mx-2">
           <div>
@@ -25,11 +25,11 @@
         <div class="cardLeft me-3">
 
           <div class="card mt-3 border-0">
-            <div class="card-header bg-white m-3 ps-0 pb-0">
+            <div class="card-header bg-white m-3 mb-0 ps-0 pb-0">
               <a (click)="add('Sobre')"><h6 class="m-2 text-primary-color">Sobre</h6></a>
             </div>
             <div class="card-body ms-4 me-4 mb-4">
-              {{usuarioEspecifico.sobre}}
+              {{usuario?.sobre}}
             </div>
           </div>
 
@@ -52,10 +52,7 @@
                 </div>
 
                 <div class="card-footer d-flex justify-content-end flex-wrap bg-white border-0">
-                    <span class="bg-dark-gray text-white rounded p-2 me-2" style="font-size: 14px;">JavaScript</span>
-                    <span class="bg-dark-gray text-white rounded p-2 me-2" style="font-size: 14px;">Angular</span>
-                    <span class="bg-dark-gray text-white rounded p-2 me-2" style="font-size: 14px;">CSS3</span>
-                    <span class="bg-dark-gray text-white rounded p-2 me-2" style="font-size: 14px;">HTML5</span>
+                    <span class="border rounded p-1 me-2" style="font-size: 14px;">JavaScript</span>
                 </div>
               </div>
             </div>
@@ -66,15 +63,12 @@
 
           <!--Ferramentas-->
           <div class="card mt-3 border-0">
-            <div class="card-header bg-white m-3 ps-0 pb-0">
+            <div class="card-header bg-white m-3 mb-0 ps-0 pb-0">
               <a (click)="add('Ferramentas')"><h6 class="m-2 text-primary-color">Ferramentas</h6></a>
             </div>
             <div class="card-body">
-              <ul class="list-group ">
-                <li class="list-group-item border-0 text-dark-gray"><i class="fab fa-js-square fs-2 me-2"></i>JavaScript</li>
-                <li class="list-group-item border-0 text-dark-gray"><i class="fab fa-angular fs-2 me-2"></i>Angular</li>
-                <li class="list-group-item border-0 text-dark-gray"><i class="fab fa-css3-alt fs-2 me-2"></i>CSS3</li>
-                <li class="list-group-item border-0 text-dark-gray"><i class="fab fa-html5 fs-2 me-2"></i>HTML5</li>
+              <ul class="list-group">
+                <li class="list-group-item border-0 text-dark-gray" *ngFor="let linguagem of usuario?.linguagem">{{linguagem.ferramenta}}</li>
               </ul>
             </div>
           </div>
@@ -87,7 +81,7 @@
 
             <div class="card border-0 bg-white text-dark-gray my-3 mx-1 mx-md-2">
               <div class="card-header d-flex align-items-center bg-white">
-                <img class="rounded-circle me-3" src="../../../../../assets/img/personas/persona.png" alt="">
+                <img class="rounded-circle me-3" src="../../../../../assets/img/personas/avatar.png" width="30px">
                 <div>
                   <h6 class="m-0">Camila Souza</h6>
                   <p class="m-0" style="font-size: 13px;">
@@ -113,8 +107,8 @@
   </div>
 </ng-container>
 
-<ng-template #semDados>
+<!--ng-template #semDados>
   <div class="text-center p-5 m-5">
     <h5>Não há dados disponíveis.</h5>
   </div>
-</ng-template>
+</ng-template-->

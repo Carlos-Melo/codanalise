@@ -7,6 +7,18 @@
   }
 }
 
+input {
+  outline: none;
+  &:focus {
+    box-shadow: none;
+    
+  }
+  &:checked {
+    border: solid 2px #118ab2;
+    background-color: #118ab2;
+  }
+}
+
 @media screen and (max-width: 800px) {
   .configuracoes-area {
     margin: 0;
