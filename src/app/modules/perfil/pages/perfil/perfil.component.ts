@@ -17,6 +17,7 @@ export class PerfilComponent implements OnInit {
 
   bsModalRef?: BsModalRef;
   email: string = localStorage.getItem('email');
+  getDark: string = localStorage.getItem('dark');
   perfil: Usuario;
   loading: boolean = false;
 

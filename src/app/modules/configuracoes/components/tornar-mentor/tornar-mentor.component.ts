@@ -15,6 +15,7 @@ export class TornarMentorComponent implements OnInit {
   formulario: FormGroup;
   erroFormulario: boolean = false;
   email: string = localStorage.getItem('email');
+  getDark: string = localStorage.getItem('dark');
   perfil: Usuario;
 
   constructor(
@@ -60,6 +61,7 @@ export class TornarMentorComponent implements OnInit {
 
   // ****************** ENVIA DADOS PARA EDIÇÃO ****************** //
   enviarDados() {
+    console.log(this.perfil)
     this.perfilService.editarUsuario(this.perfil)
     .subscribe(
       (data: Usuario) => {
