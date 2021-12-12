@@ -16,6 +16,7 @@ export class DevPerfilComponent implements OnInit {
   bsModalRef?: BsModalRef;
   usuario: Usuario;
   validaUsuario: boolean = false;
+  getDark: string = localStorage.getItem('dark');
 
   constructor(
     private modalService: BsModalService,

@@ -1,26 +1,26 @@
-<div class="perfil-area accordion" id="accordionContainer">
+<div class="perfil-area accordion" id="accordionContainer" [ngClass]="{'darkmode': getDark === 'true'}">
 
-  <div class="accordion-item border-0 bg-white text-dark-gray" style="border-radius: 15px; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+  <div class="accordion-item border-0">
     <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button text-dark-gray fw-bold btn-white bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+      <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
         Minhas Publicações
       </button>
     </h2>
     <app-minhas-publicacoes></app-minhas-publicacoes>
   </div>
 
-  <div class="accordion-item border-0 bg-white text-dark-gray mt-3" *ngIf="mentor === false" style="border-radius: 15px; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+  <div class="accordion-item border-0 mt-3" *ngIf="mentor === false">
     <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button text-dark-gray fw-bold btn-white bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+      <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
         Minhas aulas
       </button>
     </h2>
     <app-minhas-aulas></app-minhas-aulas>
   </div>
 
-  <div class="accordion-item border-0 bg-white text-dark-gray mt-3" *ngIf="mentor === true" style="border-radius: 15px; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+  <div class="accordion-item border-0 mt-3" *ngIf="mentor === true">
     <h2 class="accordion-header" id="headingFour">
-      <button class="accordion-button text-dark-gray fw-bold btn-white bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+      <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
         Minhas propostas
       </button>
     </h2>
