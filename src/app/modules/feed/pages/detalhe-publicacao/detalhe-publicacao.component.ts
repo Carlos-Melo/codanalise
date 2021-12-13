@@ -27,7 +27,7 @@ export class DetalhePublicacaoComponent implements OnInit {
 
   // Etc
   isFavourite: boolean = false;
-  comentar: boolean = false;
+  comentar: boolean = true;
   propor: boolean = false
   postagemEspecifica: Postagem;
   idPostagem = Number(localStorage.getItem('idPostagem'));
@@ -218,6 +218,17 @@ export class DetalhePublicacaoComponent implements OnInit {
   propondo() {
     this.propor = !this.propor;
     this.comentar = false;
+  }
+
+  mascaraDecimalValor(i: number) {
+
+    const formatter = new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL' 
+    });
+
+    const formatted = formatter.format(i);
+    return formatted;
   }
 
 }

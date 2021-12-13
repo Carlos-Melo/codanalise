@@ -61,7 +61,6 @@ export class TornarMentorComponent implements OnInit {
 
   // ****************** ENVIA DADOS PARA EDIÇÃO ****************** //
   enviarDados() {
-    console.log(this.perfil)
     this.perfilService.editarUsuario(this.perfil)
     .subscribe(
       (data: Usuario) => {
@@ -72,7 +71,6 @@ export class TornarMentorComponent implements OnInit {
           confirmButtonColor: '#118ab2'
         })
         this.onClose();
-        console.log(this.perfil)
     },
     error => {
       Swal.fire({

@@ -44,8 +44,8 @@
       </div>
 
       <div class="card-footer d-flex mt-5">
-        <a class="nav-link" (click)="comentarios()"><i class="far fa-comment"></i> Comentários</a>
-        <a class="nav-link" (click)="propostas()"><i class="fas fa-pencil-alt"></i> Propostas</a>
+        <a class="nav-link" (click)="comentarios()" [ngClass]="{'backLink': comentar === true}"><i class="far fa-comment"></i> Comentários</a>
+        <a class="nav-link" (click)="propostas()" [ngClass]="{'backLink': propor === true}"><i class="fas fa-pencil-alt"></i> Propostas</a>
       </div>
       <hr class="m-0">
 
@@ -84,7 +84,7 @@
               <p>Grátis</p>
             </div>
             <div>
-              <button type="button" (click)="aceitar()" class="btn-primary-color text-white border-0 p-2 me-3">Aceitar</button>
+              <button type="button" class="btn-primary-color text-white border-0 p-2 me-3">Aceitar</button>
               <button type="button" class="btn-gray text-white border-0 p-2">Recusar</button>
             </div>
           </div>

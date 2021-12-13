@@ -23,7 +23,7 @@
       <div class="d-flex flex-wrap">
         <div class="d-flex align-items-center me-md-5">
           <p class="fw-bold me-2">Valor:</p>
-          <p [hidden]="postagemEspecifica?.valor == 0" class="me-5">{{postagemEspecifica?.valor}}</p>
+          <p [hidden]="postagemEspecifica?.valor == 0" class="me-5">{{mascaraDecimalValor(postagemEspecifica?.valor)}}</p>
           <p [hidden]="postagemEspecifica?.valor > 0" class="me-5">Grátis</p>
         </div>
         <!-- <div class="d-flex align-items-center">
@@ -40,8 +40,8 @@
       </div>
 
       <div class="card-footer d-flex mt-5">
-        <a class="nav-link" (click)="comentando()"><i class="far fa-comment"></i> Comentar</a>
-        <a class="nav-link" (click)="propondo()"><i class="fas fa-pencil-alt"></i> Propor</a>
+        <a class="nav-link" (click)="comentando()" [ngClass]="{'backLink': comentar === true}"><i class="far fa-comment"></i> Comentar</a>
+        <a class="nav-link" (click)="propondo()" [ngClass]="{'backLink': propor === true}" *ngIf="publicacaoService.usuario?.mentor === true"><i class="fas fa-pencil-alt"></i> Propor</a>
       </div>
       <hr class="m-0">
 
@@ -84,45 +84,49 @@
       </form>
 
       <!--Comentários-->
-      <ng-container *ngIf="postagemEspecifica?.comentarios != null || postagemEspecifica?.comentarios.length == 0">
-        <div *ngFor="let col of postagemEspecifica?.comentarios" class="card border-0 bg-white text-dark-gray mt-4" style="border-radius: 15px; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
-          <div class="card-header d-flex align-items-center bg-white">
-            <img class="rounded-circle me-3" src="../../../../../assets/img/personas/avatar.png" alt="" width="50px">
-            <div>
-              <h6 class="m-0">{{col.autorComent?.nome}} {{col.autorComent?.sobrenome}}</h6>
-              <p class="m-0" style="font-size: 13px;">{{col.autorComent?.status}}</p>
+      <ng-container *ngIf="comentar">
+        <ng-container *ngIf="postagemEspecifica?.comentarios != null || postagemEspecifica?.comentarios.length == 0">
+          <div *ngFor="let col of postagemEspecifica?.comentarios" class="card border-0 bg-white text-dark-gray mt-4" style="border-radius: 15px; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+            <div class="card-header d-flex align-items-center bg-white">
+              <img class="rounded-circle me-3" src="../../../../../assets/img/personas/avatar.png" alt="" width="50px">
+              <div>
+                <h6 class="m-0">{{col.autorComent?.nome}} {{col.autorComent?.sobrenome}}</h6>
+                <p class="m-0" style="font-size: 13px;">{{col.autorComent?.status}}</p>
+              </div>
             </div>
+              <div class="card-body mx-0 mx-md-5">
+                <p>{{col?.comentario}}</p>
+              </div>
           </div>
-            <div class="card-body mx-0 mx-md-5">
-              <p>{{col?.comentario}}</p>
-            </div>
-        </div>
-      </ng-container>
+        </ng-container>
+    </ng-container>
 
       <!-- Propostas -->
-      <ng-container *ngIf="postagemEspecifica?.propostas != null || postagemEspecifica?.propostas.length == 0">
-        <div *ngFor="let col of postagemEspecifica?.propostas" class="card border-0 bg-white text-dark-gray mt-4" style="border-radius: 15px; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+      <ng-container *ngIf="propor">
+        <ng-container *ngIf="postagemEspecifica?.propostas != null || postagemEspecifica?.propostas.length == 0">
+          <div *ngFor="let col of postagemEspecifica?.propostas" class="card border-0 bg-white text-dark-gray mt-4" style="border-radius: 15px; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
 
-              <div class="card-header d-flex align-items-center bg-white">
-                <div class="mt-2 flex-grow-1 d-flex align-items-center">
-                  <img class="rounded-circle me-3" src="../../../../../assets/img/personas/avatar.png" alt="" width="50px">
-                  <div>
-                    <h6 class="m-0">{{col.mentor.usuario.nome}} {{col.mentor.usuario.sobrenome}}</h6>
-                    <span style="font-size: small;">{{col.mentor.usuario.status}}</span>
+                <div class="card-header d-flex align-items-center bg-white">
+                  <div class="mt-2 flex-grow-1 d-flex align-items-center">
+                    <img class="rounded-circle me-3" src="../../../../../assets/img/personas/avatar.png" alt="" width="50px">
+                    <div>
+                      <h6 class="m-0">{{col.mentor.usuario.nome}} {{col.mentor.usuario.sobrenome}}</h6>
+                      <span style="font-size: small;">{{col.mentor.usuario.status}}</span>
+                    </div>
+                    
                   </div>
-                  
+
+                  <p *ngIf="col.valor == ''" class="mt-3">Proposta gratuita</p>
+                  <p *ngIf="col.valor != ''" class="mt-3">{{mascaraDecimalValor(col.valor)}}</p>
                 </div>
 
-                <p *ngIf="col.valor == ''" class="mt-3">Proposta gratuita</p>
-                <p *ngIf="col.valor != ''" class="mt-3">R${{col?.valor}},00</p>
+                
+              <div class="card-body mx-0 mx-md-5">
+                <p>{{col.comentario}}</p>
+                
               </div>
-
-              
-            <div class="card-body mx-0 mx-md-5">
-              <p>{{col.comentario}}</p>
-              
-            </div>
-        </div>
+          </div>
+        </ng-container>
       </ng-container>
     </div>
 
