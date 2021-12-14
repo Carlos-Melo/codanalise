@@ -40,7 +40,8 @@ export class TornarMentorComponent implements OnInit {
 
   inicializarFormulario(){
     this.formulario = this.formBuilder.group({
-      curriculo: ['', Validators.compose([Validators.required])]
+      curriculo: ['', Validators.compose([Validators.required])],
+      contato: ['', Validators.compose([Validators.required])]
     })
   }
 
@@ -55,6 +56,7 @@ export class TornarMentorComponent implements OnInit {
 
   setarMentor() {
     this.perfil.mentor = true;
+    this.perfil.contato = this.formulario.get('contato').value
 
     this.enviarDados();
   }
@@ -68,7 +70,7 @@ export class TornarMentorComponent implements OnInit {
           icon: 'success',
           title: 'Sucesso',
           text: 'Currículo enviado com sucesso!',
-          confirmButtonColor: '#118ab2'
+          confirmButtonColor: '#118ab2',
         })
         this.onClose();
     },
@@ -85,6 +87,7 @@ export class TornarMentorComponent implements OnInit {
 
   onClose(){
     this.bsModelRef.hide();
+    location.reload;
   }
 
   // ****************** VALIDAÇÕES DE ERRO ******************

@@ -18,6 +18,7 @@ export class PagamentoComponent implements OnInit {
   @Input() publicacao: Postagem;
   @Input() proposta: Propostas;
 
+  getDark: string = localStorage.getItem('dark');
   formularioPagamento: FormGroup;
   loading: boolean = false;
 
@@ -60,7 +61,8 @@ export class PagamentoComponent implements OnInit {
     const numeroCartao = this.formularioPagamento.controls.numeroCartao.value;
     const cdv = this.formularioPagamento.controls.cdv.value;
     const nomeCartao = this.formularioPagamento.controls.nomeCartao.value;
-    const validade = this.formularioPagamento.controls.validade.value;
+    let validade = this.formularioPagamento.controls.validade.value;
+    validade = validade.substring(0,2) + '/' + validade.substring(2,4)
     const proposta = this.proposta;
     const valorProposta = this.proposta.valor;
     
